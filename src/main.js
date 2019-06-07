@@ -11,7 +11,12 @@ function parseLatLong(json) {
 }
 
 function parseDoc(object, index) {
-
+    return (
+    `<div id="result${index}">
+        <p class="doc-name">${object.data[index].profile.last_name}, ${object.data[index].profile.first_name} ${object.data[index].profile.middle_name}
+        </p>
+    </div>`
+    );
 }
 
 $().ready(function(){
@@ -27,7 +32,12 @@ $().ready(function(){
             return doctorService.getDocs(query, location);
         })
         .then(function(response){
-            
+            let results = JSON.parse(response);
+            let resultsHtml = "";
+            for(let i = 0; i < results.length; i++){
+                resultsHtml += parseDoc(results, i);
+            }
+            $('#results').append(resultsHtml);
         });
     });
   
