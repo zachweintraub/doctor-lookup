@@ -9,6 +9,14 @@
 <body>
   <div class="container">
     <h1>Doctor Lookup</h1>
+    <form id="searchForm">
+      <label for="query">Find doctors that treat:</label>
+      <input required id="query" type="text">
+      <label for="location">in</label>
+      <input required type="text" id="location" placeholder="Enter a city or ZIP code...">
+      <button type="submit">Find Doctors!</button>
+    </form>
+    <div id="results"></div>
   </div>
 </body>
 </html>
