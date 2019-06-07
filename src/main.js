@@ -20,7 +20,7 @@ function parseDoc(object, index) {
         addressOutput += `${addressObject.city}, ${addressObject.state} ${addressObject.zip}`;
         return addressOutput;
     }
-    let output = `<div id="result${index}"><p class="doc-name">${object.data[index].practices[0].name}</p><div class="more-info"><p class="address">Address: ${parseAddress(object.data[index].practices[0].visit_address)}</p><p class="phone">Tel: ${object.data[index].practices[0].phones[0].number}</p>`;
+    let output = `<div class="result-block" id="result${index}"><p class="doc-name">${object.data[index].practices[0].name}</p><div class="more-info"><p class="address">Address: ${parseAddress(object.data[index].practices[0].visit_address)}</p><p class="phone">Tel: ${object.data[index].practices[0].phones[0].number}</p>`;
     if(object.data[index].practices[0].accepts_new_patients){
         output += `<p class="new-patients">This doctor is accepting new patients.</p>`;
     } else {
@@ -55,6 +55,14 @@ $().ready(function(){
             }
             $('#results').append(resultsHtml);
         });
+    });
+    $('#results').on('mouseenter', '.result-block', function()
+    {
+        $('.more-info', this).slideDown();
+    });
+    $('#results').on('mouseleave', '.result-block', function()
+    {
+        $('.more-info', this).slideUp();
     });
   
 });

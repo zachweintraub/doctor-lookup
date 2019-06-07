@@ -5,15 +5,20 @@ body {
 [id^=result] {
   border: black 2px;
   padding: 10px;
-  margin: 10px;
-  line-height: 3%;
+  /* margin: 10px; */
+  line-height: 10px;
 }
 
 .doc-name {
   text-decoration: underline;
   font-weight: bold;
 }
+.result-block:hover {
+  cursor: pointer;
+}
 
-/* .more-info{
+.more-info{
   display: none;
-} */
+  background: lightgoldenrodyellow;
+  padding: 3%;
+}
