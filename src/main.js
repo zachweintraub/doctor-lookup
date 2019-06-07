@@ -14,9 +14,9 @@ function parseDoc(object, index) {
     function parseAddress(addressObject){
         let addressOutput = "";
         addressOutput += `${addressObject.street} `;
-        if(object.street2 != undefined) {
+        // if(object.street2 != null) {
             addressOutput += `${addressObject.street2} `;
-        }
+        // }
         addressOutput += `${addressObject.city}, ${addressObject.state} ${addressObject.zip}`;
         return addressOutput;
     }
@@ -46,8 +46,12 @@ $().ready(function(){
         .then(function(response){
             let results = JSON.parse(response);
             let resultsHtml = "";
-            for(let i = 0; i < results.data.length; i++){
-                resultsHtml += parseDoc(results, i);
+            if(results.data.length == 0){
+                resultsHtml = "Your search returned 0 results. Try again sicko!"
+            } else {
+                for(let i = 0; i < results.data.length; i++){
+                    resultsHtml += parseDoc(results, i);
+                }
             }
             $('#results').append(resultsHtml);
         });

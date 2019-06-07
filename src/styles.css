@@ -4,9 +4,14 @@ body {
 
 [id^=result] {
   border: black 2px;
-  padding: 5px;
-  margin: 5px;
+  padding: 10px;
+  margin: 10px;
   line-height: 3%;
+}
+
+.doc-name {
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 /* .more-info{
