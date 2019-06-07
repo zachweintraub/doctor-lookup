@@ -1,3 +1,14 @@
 body {
   background-color: rgb(200, 240, 255);
 }
+
+[id^=result] {
+  border: black 2px;
+  padding: 5px;
+  margin: 5px;
+  line-height: 3%;
+}
+
+/* .more-info{
+  display: none;
+} */
