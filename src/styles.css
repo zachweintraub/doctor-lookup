@@ -13,7 +13,7 @@ body {
   text-decoration: underline;
   font-weight: bold;
 }
-.result-block:hover {
+.doc-name:hover {
   cursor: pointer;
 }
 
@@ -21,4 +21,12 @@ body {
   display: none;
   background: lightgoldenrodyellow;
   padding: 3%;
+}
+
+.jumbotron {
+  background: lightgoldenrodyellow;
+}
+
+#instructions {
+  font-weight: bold;
 }

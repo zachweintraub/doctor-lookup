@@ -7,26 +7,31 @@ import { DocService } from './DocService';
 
 function parseLatLong(json) {
     let body = JSON.parse(json);
-    return `${body.results[0].locations[0].latLng.lat},` + `${body.results[0].locations[0].latLng.lng},` + '100';
+    let output = `${body.results[0].locations[0].latLng.lat},` + `${body.results[0].locations[0].latLng.lng},` + '100';
+    return output;
 }
 
 function parseDoc(object, index) {
     function parseAddress(addressObject){
         let addressOutput = "";
         addressOutput += `${addressObject.street} `;
-        // if(object.street2 != null) {
+        if(addressObject.street2 != undefined) {
             addressOutput += `${addressObject.street2} `;
-        // }
+        }
         addressOutput += `${addressObject.city}, ${addressObject.state} ${addressObject.zip}`;
         return addressOutput;
     }
     let output = `<div class="result-block" id="result${index}"><p class="doc-name">${object.data[index].practices[0].name}</p><div class="more-info"><p class="address">Address: ${parseAddress(object.data[index].practices[0].visit_address)}</p><p class="phone">Tel: ${object.data[index].practices[0].phones[0].number}</p>`;
+    if(object.data[index].practices[0].website != undefined){
+        output += `<p class="website">Website: <a target="_blank" href="${object.data[index].practices[0].website}">${object.data[index].practices[0].website}</a></p>`
+    }
     if(object.data[index].practices[0].accepts_new_patients){
         output += `<p class="new-patients">This doctor is accepting new patients.</p>`;
     } else {
         output += `<p class="new-patients">This doctor is not accepting new patients.</p>`;
     }
     output += `</div></div>`;
+
     return output;
 }
 
@@ -56,13 +61,9 @@ $().ready(function(){
             $('#results').append(resultsHtml);
         });
     });
-    $('#results').on('mouseenter', '.result-block', function()
+    $('#results').on('click', '.result-block', function()
     {
-        $('.more-info', this).slideDown();
-    });
-    $('#results').on('mouseleave', '.result-block', function()
-    {
-        $('.more-info', this).slideUp();
+        $('.more-info', this).slideToggle();
     });
   
 });

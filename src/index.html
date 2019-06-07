@@ -8,12 +8,16 @@
 </head>
 <body>
   <div class="container">
-    <h1>Doctor Lookup</h1>
+    <div class="jumbotron">
+      <h1>Doctor Lookup</h1>
+      <h5>What seems to be the problem?</h5>
+    </div>
+    <p id="instructions">Enter a symptom or doctor's name and your location to get a list of relevant doctors!</p>
     <form id="searchForm">
-      <label for="query">Find doctors that treat:</label>
-      <input required id="query" type="text">
+      <label for="query">I'm looking for:</label>
+      <input required id="query" type="text" placeholder="Symptom or name...">
       <label for="location">in</label>
-      <input required type="text" id="location" placeholder="Enter a city or ZIP code...">
+      <input required type="text" id="location" placeholder="City or ZIP code...">
       <button type="submit">Find Doctors!</button>
     </form>
     <div id="results"></div>
